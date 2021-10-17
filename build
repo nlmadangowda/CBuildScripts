@@ -1,0 +1,13 @@
+#!/bin/bash
+	`rm out.o`
+	$echo "clear"
+	A=""
+	for i in *.c
+	do
+	     A+="$i "
+	done
+	`gcc -g $A -o out.o`
+	#`gcc -c -Wall $A`
+	echo "code build complete"
+
+exit

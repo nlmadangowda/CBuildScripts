@@ -1,0 +1,52 @@
+#!/bin/bash
+
+if [ "$1" == "open" ]; then
+    for i in *.cpp -o *.h -o *.c
+	do
+		`subl $i`
+	done
+
+elif [ "$1" == "build" ]; then
+	`rm out.o`
+	$echo "clear"
+	A=""
+	if [ "$2" == "c" ]; then
+		echo "Building a c code"
+		for i in *.c
+		do
+		     A+="$i "
+		done
+		`gcc -g -Wall $A -o out.o`
+	elif [ "$2" == "cpp" ]; then
+		echo "Building a cpp code"
+		for i in *.cpp
+		do
+		     A+="$i "
+		done
+	`g++ -g -Wall $A -o out.o`
+	elif [ "$2" == "c/cpp" ]; then
+		echo "Building a c/cpp code"
+		for i in *.cpp -o *.c
+		do
+		     A+="$i "
+		done
+	`g++ -g -Wall $A -o out.o`
+	else 
+		echo "select build option c or c++"
+	fi
+	echo "code build complete"
+
+elif [ "$1" == "run" ]; then
+	$echo "clear"
+	$echo "./out.o"
+
+elif [ "$1" == "clean" ]; then
+	`rm out.o`
+	echo "cleaned"
+
+else
+	echo "plz enter project followed by arrg"
+	echo "open (or) build (or) run (or) clean"
+fi
+
+exit 
