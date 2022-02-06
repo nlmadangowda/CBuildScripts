@@ -1,0 +1,18 @@
+CC      = gcc
+CFLAGS  = -g
+RM      = rm -f
+
+APP_VERSION = 0.1
+OUTPUT := ./out
+
+OUTPUT := $(OUTPUT)_$(APP_VERSION)
+
+default: all
+
+all: Hello
+
+Hello: Hello.c
+	$(CC) $(CFLAGS) -o $(OUTPUT) Hello.c
+
+clean veryclean:
+	$(RM) ./out
